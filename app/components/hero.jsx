@@ -89,8 +89,8 @@ export default function PortfolioHero({ data }) {
           <motion.a 
             whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(139,92,246,0.2)" }} 
             whileTap={{ scale: 0.95 }} 
-            href={"Resume.pdf"} 
-            download 
+            href="/resume.pdf" 
+            download="My_Resume.pdf"
             className="group flex items-center gap-3 px-10 py-5 bg-violet-600 text-white text-sm font-bold rounded-full transition-all"
           >
             <FileDown className="w-4 h-4 transition-transform group-hover:-translate-y-1" />
