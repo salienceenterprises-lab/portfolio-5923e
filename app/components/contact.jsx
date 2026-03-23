@@ -146,7 +146,7 @@ export default function PortfolioContact({ data }) {
                 <motion.button
                   type="submit"
                   disabled={status === "loading" || status === "success"}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover="hover" // This triggers the "hover" variant in all children
                   whileTap={{ scale: 0.98 }}
                   className={`group relative overflow-hidden inline-flex items-center gap-3 px-8 py-4 rounded-2xl text-sm font-semibold transition-all duration-500 ${
                     status === "success" ? "bg-green-500 text-white" : "bg-violet-600 text-white shadow-lg shadow-violet-600/20"
@@ -159,15 +159,29 @@ export default function PortfolioContact({ data }) {
                       </motion.div>
                     ) : status === "success" ? (
                       <motion.div key="success" initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} className="flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5" /> Sent Successfully
+                        <CheckCircle className="w-4 h-4" /> Sent!
                       </motion.div>
                     ) : (
                       <motion.div key="idle" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex items-center gap-2">
-                        <Send className="w-4 h-4" /> Send Message
+                        <span>Send Message</span>
+                        {/* THE AIRPLANE ANIMATION */}
+                        <motion.div
+                          variants={{
+                            hover: { 
+                              x: [0, 5, -20, 40], 
+                              y: [0, -5, 10, -40], 
+                              opacity: [1, 1, 0, 1],
+                              transition: { duration: 0.6, ease: "easeInOut" } 
+                            }
+                          }}
+                        >
+                          <Send className="w-4 h-4" />
+                        </motion.div>
                       </motion.div>
                     )}
                   </AnimatePresence>
                 </motion.button>
+
               </form>
             </motion.div>
           )}
